@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>H5test</title>
+    <link rel="stylesheet" type="text/css" href="css/dateTemplate.css" />
+    <link rel="stylesheet" type="text/css" href="css/notify.css" />
+    <link rel="shortcut icon" type="images/x-icon" href="https://t.vdfor.top/favicon.ico">    
+</head>
+
+<body>
+    <div class="information-module">
+        <div class="table">
+            <div id="date" class="dateTemplate">
+                <span>Table</span>
+                <br>
+                <hr>
+                <label for="typeSelector">Type:</label>
+                <select class="" id="typeSelector" data-toggle="dropdown" aria-haspopup="true">
+                    <option>ALL</option>
+                    <option>Running</option>
+                    <option>Finished</option>
+                    <option>Error</option>
+                </select>
+                <label for="statusSelector">Status:</label>
+                <select type="button" id="statusSelector">
+                    <option>ALL</option>
+                    <option>Running</option>
+                    <option>Finished</option>
+                    <option>Error</option>
+                </select>
+                <label for="startTime">Time:
+                    <input id="startTime" type="date">
+                </label>
+                <label for="endTime">至
+                    <input id="endTime" type="date">
+                </label>
+                <input type="button" id="query" value="query" class="queryBtn" />
+            </div>
+            <div id="tableTitle">
+            </div>
+            <div class="result" id="resultTable">
+                <table id="resultRow">
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>StartTime/EndTime</th>
+                        <th>Logs</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="pagesload">
+                <div>
+                    <button id="beforePage">上一页</button>
+                    <button >1</button>
+                    <button >2</button>
+                    <button >3</button>
+                    <button >4</button>
+                    <button >5</button>
+                    <button id="nextPage">下一页</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">@C-CODE-X</div>    
+</body>
+<script src="js/notify.js"></script>
+<script src="js/dateTemplate.js"></script>
+<script src="js/index.js"></script>
+</html>
