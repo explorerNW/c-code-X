@@ -1,4 +1,4 @@
-/* @media (min-width: 576px){ */
+/*  */
 
 body,
 iframe,
@@ -13,7 +13,9 @@ label {
 }
 
 input {
-    border: 1px solid rgba(211, 204, 204, 0.808);
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .footer {
@@ -67,11 +69,32 @@ input {
 #statusSelector,
 #typeSelector {
     border-radius: 3px;
-    border: 1px solid rgb(134, 134, 197);
-    padding: .5% .8%;
+    border: 0;
+    padding: 5px;
 }
 
-option {
+select {
+    /* border: solid 5px #FFF; */
+    /* appearance: none; */
+    /* -moz-appearance: none; */
+    /*for firefox*/
+    /* -webkit-appearance: none; */
+    /*for chrome*/
+    /* padding-right: 10px; */
+    color: #FFF;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    overflow: hidden;
+    background-color: #FF9900;    
+}
+
+option {    
+    color: #FFF;
+}
+
+option:hover {
+    padding: 5px;
     background-color: rgb(228, 228, 228);
 }
 
@@ -88,8 +111,8 @@ table {
     border-collapse: collapse;
 }
 
-td{
-    padding: 3px;
+td {
+    padding: 10px 0;
 }
 
 div.result {
@@ -107,6 +130,11 @@ div.result {
     text-align: center;
 }
 
+.pagesload button{
+    padding:5px 10px; 
+    border-radius: 5px;   
+}
+
 .pagesload button:hover {
     cursor: pointer;
 }
@@ -116,29 +144,27 @@ div.result {
 .Error {
     color: white;
     border-radius: 5px;
-    padding: 1px 5px;    
+    padding: 1px 5px;
 }
 
-.Running:hover,
+
+/* .Running:hover,
 .Finished:hover,
 .Error:hover {
     color: red;
-    background-color: white;
-}
+    background-color: white;        
+} */
 
 .Running {
     background-color: green;
-    border: 1px solid yellowgreen;
 }
 
 .Finished {
     background-color: silver;
-    border: 1px solid yellow;
 }
 
 .Error {
     background-color: red;
-    border: 1px solid black;
 }
 
 .show {
@@ -161,4 +187,3 @@ div.result {
     color: gray;
 }
 
-.filter {}

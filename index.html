@@ -7,7 +7,7 @@
     <title>H5test</title>
     <link rel="stylesheet" type="text/css" href="css/dateTemplate.css" />
     <link rel="stylesheet" type="text/css" href="css/notify.css" />
-    <link rel="shortcut icon" type="images/x-icon" href="https://t.vdfor.top/favicon.ico">    
+    <link rel="shortcut icon" type="images/x-icon" href="https://t.vdfor.top/favicon.ico" />
 </head>
 
 <body>
@@ -18,18 +18,21 @@
                 <br>
                 <hr>
                 <label for="typeSelector">Type:</label>
-                <select class="" id="typeSelector" data-toggle="dropdown" aria-haspopup="true">
-                    <option>ALL</option>
-                    <option>Running</option>
-                    <option>Finished</option>
-                    <option>Error</option>
+                <select id="typeSelector">
+                    <option value="0">ALL</option>
+                    <option value="1">
+                        <span>Docker</span>
+                    </option>
+                    <option value="2">
+                        <span>OpenStack</span>
+                    </option>
                 </select>
                 <label for="statusSelector">Status:</label>
-                <select type="button" id="statusSelector">
-                    <option>ALL</option>
-                    <option>Running</option>
-                    <option>Finished</option>
-                    <option>Error</option>
+                <select id="statusSelector">
+                    <option value="0">ALL</option>
+                    <option value="1">Running</option>
+                    <option value="2">Finished</option>
+                    <option value="3">Error</option>
                 </select>
                 <label for="startTime">Time:
                     <input id="startTime" type="date">
@@ -55,19 +58,22 @@
             <div class="pagesload">
                 <div>
                     <button id="beforePage">上一页</button>
-                    <button >1</button>
-                    <button >2</button>
-                    <button >3</button>
-                    <button >4</button>
-                    <button >5</button>
+                    <button id="cutdown">&lt;</button>
+                    <button id="btn1" value="1">1</button>
+                    <button id="btn2" value="2">2</button>
+                    <button id="btn3" value="3">3</button>
+                    <button id="btn4" value="4">4</button>
+                    <button id="btn5" value="5">5</button>
+                    <button id="add">&gt;</button>
                     <button id="nextPage">下一页</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer">@C-CODE-X</div>    
+    <!-- <div class="footer">@C-CODE-X</div>         -->
 </body>
 <script src="js/notify.js"></script>
-<script src="js/dateTemplate.js"></script>
 <script src="js/index.js"></script>
+<script src="js/dateTemplate.js"></script>
+
 </html>

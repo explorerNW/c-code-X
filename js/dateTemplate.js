@@ -12,7 +12,6 @@
     function parseToTable(temp) {
         var tr = document.createElement("tr");
         tr.innerHTML = temp;
-        console.log(tr);
         return tr;
     }
 
@@ -22,9 +21,17 @@
     let statusValue = null;
     let clientWidth = null;
     let clientHeight = null;
+    let resultData = null;
     let page = 1;
     let latestPage = null;
     let pageSize = 50;
+    let latestTr = 0;
+    let notifyContent = null;
+    let temp = null;
+    let temp2 = null;
+    let btnValue = null;
+    let clickTime = null;
+    let btn1Value = null;
     class queryDate {
         //初始化
         constructor() {
@@ -58,20 +65,30 @@
             this._getQueryParameterValue(this);
             this.typeSelectorNode = document.getElementById("typeSelector");
             this.statusSelectorNode = document.getElementById("statusSelector");
+            //获取addBtn
+            this.addBtn = document.querySelector("#add");
+            //获取cutdownBtn
+            this.cutdownBtn = document.querySelector("#cutdown");
             //获取当前时间
             this._getcurrentDate();
             typeValue = this.typeSelectorNode.value;
             statusValue = this.statusSelectorNode.value;
             //clientWH
-            this._getClientWidthHeight();
+            //this._getClientWidthHeight();
             //initElementWidth&Height
-            this._initElementWidthHeight();
+            //this._initElementWidthHeight();
             //获得后台数据
             this._getData();
             this._beforePage(this);
             this._nextPage(this);
             //初始化table
             this._initTable();
+            //cutdownFivePage
+            this._cutdownFivePage(this);
+            //cutdownFivePage()
+            this._addFivePage(this);
+            //加减页码组件的第一个btn
+            this.firstAddBtn = document.querySelector("#btn1");
         }
 
 
@@ -118,6 +135,8 @@
             //监听click事件
             date.addEventListener("click", function (event) {
                 if (event.target.id === "query") {
+                    typeValue = obj.typeSelectorNode.value;
+                    statusValue = obj.statusSelectorNode.value;
                     startTime = obj.startTimeNode.value;
                     endTime = obj.endTimeNode.value;
                     obj._getData();
@@ -140,14 +159,19 @@
         //下一页
         _nextPage(obj) {
             this.nextPage.addEventListener("click", function () {
-                page++;
-                if (page > latestPage) {
+                if (page >= latestPage) {
                     obj.nextPage.disabled = true;
+                    pageSize = latestTr;
                     page--;
                 } else {
+                    page++;
                     obj.beforePage.disabled = false;
-                    obj._getData();
+                    for (let i = 1; i <= 5; i++) {
+                        document.querySelector("#btn" + i).value = Number(document.querySelector("#btn" + i).value) + 1;
+                        document.querySelector("#btn" + i).innerHTML = document.querySelector("#btn" + i).value;
+                    }
                 }
+                obj._getData();
             }, true);
         }
         //上一页
@@ -156,27 +180,59 @@
                 page--;
                 if (page < 1) {
                     obj.beforePage.disabled = true;
-                    page++;
+                    page = 1;
                 } else {
                     obj.nextPage.disabled = false;
+                    for (let i = 1; i <= 5; i++) {
+                        document.querySelector("#btn" + i).value = Number(document.querySelector("#btn" + i).value)>1?Number(document.querySelector("#btn" + i).value) - 1:1;
+                        document.querySelector("#btn" + i).innerHTML = document.querySelector("#btn" + i).value;
+                    }
                     obj._getData();
                 }
             }, true);
         }
 
-        _message(obj) {
-            console.log(obj);
+        //addFivePage
+        _addFivePage(obj) {
+            this.addBtn.addEventListener("click", function () {
+                if (btn1Value <= 5 + btn1Value) {
+                    for (let i = 1; i <= 5; i++) {
+                        btnValue = Number(document.querySelector("#btn" + i).value);
+                        btnValue += 5;
+                        document.querySelector("#btn" + i).value = btnValue;
+                        document.querySelector("#btn" + i).innerHTML = btnValue;
+                    }
+                }
+            }, true);
+        }
+        //cutdownPage
+        _cutdownFivePage(obj) {
+            this.cutdownBtn.addEventListener("click", function () {
+                btn1Value = Number(obj.firstAddBtn.value);
+                if (btn1Value >= btn1Value - 5 && btn1Value > 1) {
+                    for (let j = 1; j <= 5; j++) {
+                        btnValue = Number(document.querySelector("#btn" + j).value);
+                        btnValue -= 5;
+                        document.querySelector("#btn" + j).value = btnValue;
+                        document.querySelector("#btn" + j).innerHTML = btnValue;
+                    }
+                }
+            }, true);
         }
 
         //fetch获取后台数据
         _getData() {
-            let URL = `https://t.vdfor.top/api/v0/hy/test/list?type=0&status=0&startTime=${startTime}&endTime=${endTime}&current=${page}&pageSize=${pageSize}`;
+            let URL = `https://t.vdfor.top/api/v0/hy/test/list?type=${typeValue}&status=${statusValue}&startTime=${startTime}&endTime=${endTime}&current=${page}&pageSize=${pageSize}`;
             fetch(URL).then(function (response) {
                 let resultRow = document.querySelector("#resultRow");
                 response.json().then(function (data) {
-                    let resultData = data.data;
-                    console.log();
-                    latestPage = data.total / pageSize;
+                    resultData = data.data;
+                    if (latestPage == null) {
+                        latestPage = (data.total % pageSize) == 0 ? (data.total / pageSize) : ((data.total / pageSize) + 1) ^ 0;
+                    }
+                    if (latestTr == 0) {
+                        latestTr = data.total % pageSize;
+                    }
                     for (let i = 0; i < pageSize; i++) {
                         for (let j = 0; j < 5; j++) {
                             switch (j) {
@@ -191,7 +247,6 @@
                                     }
                                     break;
                                 case 2:
-                                    let temp = null;
                                     switch (resultData[i].status) {
                                         case 1:
                                             temp = `<span class = "Running">Running</span>`;
@@ -208,17 +263,17 @@
                                     document.querySelector("#row" + i + "col" + j).innerHTML = resultData[i].time;
                                     break;
                                 case 4:
-                                    let temp2 = `<span class = "details" >详情</span><span class = "show">告警</span>`;
+                                    temp2 = `<span  class = "hidden">告警</span>`;
                                     if (resultData[i].warning_log === 1) {
-                                        temp2 = `<span class = "details"  onclick = "" >详情</span><span  class = "hidden">告警</span>`;
+                                        temp2 = `<span class = "show" onclick = "javascript:notify.contentNode.innerHTML = 'warning!';notify.popWindow.style.display='block';notify.maskLayer.style.display='block';">告警</span>`;
                                     }
                                     if (resultData[i].info_log === 1) {
-                                        temp2 = `<span class = "details"  onclick = "javascript:alert(this);" >详情</span><span  class = "hidden">告警</span>`;
-                                    } else if (resultData[i].info_log === 0) {
-                                        temp2 = `<span class = "details"  onclick = "javascript:alert(this);" >详情</span><span  class = "hidden">告警</span>`;
+                                        notifyContent = "192.168." + (resultData[i].name).match((/[\d]/g)).toString().replace(/,/g, '') + "正在回滚";
+                                        temp2 = `<span class = "details"  onclick = "javascript:notify.contentNode.innerHTML= '${notifyContent}';notify.popWindow.style.display='block';notify.maskLayer.style.display='block';" >详情</span>` + temp2;
                                     } else {
-
+                                        temp2 = `<span class = " hidden">详情</span>` + temp2;
                                     }
+                                    //notifyContent = "192.168."+(resultData[i].name).match((/[\d]/g)).toString().replace(/,/g,'')+"备份未成功..."; onclick = "javascript:notify.contentNode.innerHTML= '${notifyContent}';notify.popWindow.style.display='block';notify.maskLayer.style.display='block';"                                         
                                     document.querySelector("#row" + i + "col" + j).innerHTML = temp2;
                             }
                         }
@@ -226,8 +281,7 @@
                 });
             });
         }
-
-    }    
+    }
     //把class Date暴露
     //window.queryDate = queryDate;
     new queryDate();

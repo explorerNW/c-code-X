@@ -1,1 +1,2 @@
-new Notify();
+//实例化Notify
+let notify = new Notify();
