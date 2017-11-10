@@ -28,14 +28,15 @@ let notify = new Notify();
     navigationBar.style.top = "0px";
     navigationBar.style.width = clientWidth*0.20+"px";      
     navigationBar.style.height = clientHeight + "px";  
-
+    
     //监听导航栏点击事件改变iframe的src值
     document.querySelector(".navigationBar").addEventListener("click", function (event) {
-        if (event.target.id === "rdk") {
+        console.log(event.target);
+        if (event.target.id === "rdk" || event.target.id === "loadRdk") {
             myFrame.src = "rdk.html";
-        } else if (event.target.id === "table") {
+        } else if (event.target.id === "table" || event.target.id === "loadTable") {
             myFrame.src = "table.html";
-        }else if(event.target.id === "home"){
+        }else if(event.target.id === "home" || event.target.id === "loadHome"){
             myFrame.src = "home.html";
         }
     }, true);

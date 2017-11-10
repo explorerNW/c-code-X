@@ -1,54 +1,72 @@
 /**
  * @author:c-code-XTEAM(explorerNW)
  */
-body,ul,li{
-    padding:0;
+
+body,
+ul,
+li {
+    padding: 0;
     margin: 0;
 }
-div{float: right;}
-li{     
-     list-style: none;
+
+div {
+    float: right;
 }
-a{
-    color:white;
+
+li {
+    list-style: none;
+}
+
+a {
+    border: 1px solid white;
+    color: white;
     text-decoration: none;
 }
 
-.top{    
+
+
+.top {
     width: 80%;
-    height: 80px;    
-    background-color: silver;    
+    height: 80px;
+    background-color: silver;
 }
 
-.navigationBar{     
-    float: left;    
-    width: 20%;    
+.navigationBar {
+    float: left;
+    width: 20%;
     transition: all .5s ease-in-out;
     color: white;
     background-color: black;
 }
-.navigationBar ul{
-    padding-bottom: 100%;
+
+.navigationBar ul li {
+    text-align: center;    
+    border: 1px solid white;
 }
-.navigationBar ul li{
-     padding: 5px 20px;
-     border:1px solid white;
-}
-.navigationBar ul li:hover{
+
+.navigationBar ul li:hover {
     color: white;
     background-color: blue;
 }
-#HideShow{
-    transition: all .5s ease-in-out;    
+.navigationBar ul li span {            
+    padding: 10px;        
 }
 
-.content{
-    width: 80%;       
-    transition: all .5s ease-in-out;        
+.navigationBar ul li{
+            text-align: left;
 }
-.content iframe{
+#HideShow {
+    transition: all .5s ease-in-out;
+}
+
+.content {
+    width: 80%;
+    transition: all .5s ease-in-out;
+}
+
+.content iframe {
     border: 0;
     height: 100%;
-    width:100%;
+    width: 100%;
     scroll-behavior: auto;
 }
