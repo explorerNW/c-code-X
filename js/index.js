@@ -31,7 +31,7 @@ let notify = new Notify();
     
     //监听导航栏点击事件改变iframe的src值
     document.querySelector(".navigationBar").addEventListener("click", function (event) {
-        console.log(event.target);
+        //console.log(event.target);
         if (event.target.id === "rdk" || event.target.id === "loadRdk") {
             myFrame.src = "rdk.html";
         } else if (event.target.id === "table" || event.target.id === "loadTable") {
