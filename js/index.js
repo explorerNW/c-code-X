@@ -1,3 +1,6 @@
+/**
+ * @author:c-code-XTEAM(explorerNW)
+ */
 //实例化Notify
 let notify = new Notify();
 !(() => {
@@ -38,13 +41,14 @@ let notify = new Notify();
     //隐藏按钮
     hiddeBtn.style.position = "absolute";    
     hiddeBtn.style.top = "30px";            
-    hiddeBtn.style.left = Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px"   ;//Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";   (navigationBar.style.width).toString()
+    hiddeBtn.style.left = Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";//Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";   (navigationBar.style.width).toString()
 
 
     //屏幕适配-------------------当屏幕宽度小于600时自动导航栏隐藏
     if (clientWidth < 600) {
         navigationBar.style.width = Number((navigationBar.style.width.toString()).replace(/px/g,''))+20+"px"
         navigationBar.style.fontSize = "15px";
+        hiddeBtn.style.left = Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";
         navigationBar.style.left = -Number((navigationBar.style.width).toString().replace("px",''))+"px";
         content.style.width = "100%";
         top.style.width = "100%";

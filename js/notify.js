@@ -1,3 +1,6 @@
+/**
+ * @author:c-code-XTEAM(explorerNW)
+ */
 !(() => {
         const template = `<div id = "notify">                                                                                      
                                 <div id="popWindow" class="popWindow" style="display: none;">
