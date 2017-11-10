@@ -35,6 +35,8 @@ let notify = new Notify();
             myFrame.src = "rdk.html";
         } else if (event.target.id === "table") {
             myFrame.src = "table.html";
+        }else if(event.target.id === "home"){
+            myFrame.src = "home.html";
         }
     }, true);
 
