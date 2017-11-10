@@ -4,76 +4,34 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>H5test</title>
-    <link rel="stylesheet" type="text/css" href="css/dateTemplate.css" />
-    <link rel="stylesheet" type="text/css" href="css/notify.css" />
+    <title>c-code-X Team</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://use.fontawesome.com/2977e19a6e.js"></script>
     <link rel="shortcut icon" type="images/x-icon" href="https://t.vdfor.top/favicon.ico" />
 </head>
 
 <body>
-    <div class="information-module">
-        <div class="table">
-            <div id="date" class="dateTemplate">
-                <span>Table</span>
-                <br>
-                <hr>
-                <label for="typeSelector">Type:</label>
-                <select id="typeSelector">
-                    <option value="0">ALL</option>
-                    <option value="1">
-                        <span>Docker</span>
-                    </option>
-                    <option value="2">
-                        <span>OpenStack</span>
-                    </option>
-                </select>
-                <label for="statusSelector">Status:</label>
-                <select id="statusSelector">
-                    <option value="0">ALL</option>
-                    <option value="1">Running</option>
-                    <option value="2">Finished</option>
-                    <option value="3">Error</option>
-                </select>
-                <label for="startTime">Time:
-                    <input id="startTime" type="date">
-                </label>
-                <label for="endTime">至
-                    <input id="endTime" type="date">
-                </label>
-                <input type="button" id="query" value="query" class="queryBtn" />
-            </div>
-            <div id="tableTitle">
-            </div>
-            <div class="result" id="resultTable">
-                <table id="resultRow">
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>StartTime/EndTime</th>
-                        <th>Logs</th>
-                    </tr>
-                </table>
-            </div>
-            <div class="pagesload">
-                <div>
-                    <button id="beforePage">上一页</button>
-                    <button id="cutdown">&lt;</button>
-                    <button id="btn1" value="1">1</button>
-                    <button id="btn2" value="2">2</button>
-                    <button id="btn3" value="3">3</button>
-                    <button id="btn4" value="4">4</button>
-                    <button id="btn5" value="5">5</button>
-                    <button id="add">&gt;</button>
-                    <button id="nextPage">下一页</button>
-                </div>
-            </div>
-        </div>
+    <div class = "top"></div>
+    <div class="navigationBar">
+        <h1 class="fa fa-file-text-o">Docs</h1>
+        <ul>
+            <li>
+                <a class="fa fa-home" href="#">Home</a>
+            </li>
+            <li id="rdk">
+                <span class="fa fa-user-o">Rdk</span>
+            </li>
+            <li id="table">
+                <span class="fa fa-check-square-o">Table</span>
+            </li>            
+        </ul>                
     </div>
-    <!-- <div class="footer">@C-CODE-X</div>         -->
+    <span class = "fa fa-file-text-o fa-3x" id = "HideShow"></span>
+    <div class="content">
+        <iframe src="" id="myframe"></iframe>
+    </div>
 </body>
 <script src="js/notify.js"></script>
 <script src="js/index.js"></script>
-<script src="js/dateTemplate.js"></script>
 
 </html>
