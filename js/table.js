@@ -43,7 +43,7 @@
             //this.containerNode = document.querySelector(".container");
             //获取information-module节点
             this.informationModuleNode = document.querySelector(".information-module");
-            this.informationModuleNode.style.height = document.documentElement.clientHeight+"px";
+            this.informationModuleNode.style.height = document.documentElement.clientHeight-100+"px";
             //获取resultTable
             this.resultTable = document.querySelector("#resultTable");
             //获取startTime节点            
