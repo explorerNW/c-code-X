@@ -23,10 +23,8 @@ a {
     text-decoration: none;
 }
 
-
-
 .top {
-    width: 80%;
+    width: 85%;
     height: 80px;
     background-color: silver;
 }
@@ -40,7 +38,7 @@ a {
 }
 
 .navigationBar ul li {
-    text-align: center;    
+    text-align: center;
     border: 1px solid white;
 }
 
@@ -48,19 +46,21 @@ a {
     color: white;
     background-color: blue;
 }
-.navigationBar ul li span {            
-    padding: 10px;        
+
+.navigationBar ul li span {
+    padding: 10px;
 }
 
-.navigationBar ul li{
-            text-align: left;
+.navigationBar ul li {
+    text-align: left;
 }
+
 #HideShow {
     transition: all .5s ease-in-out;
 }
 
 .content {
-    width: 80%;
+    width: 85%;
     transition: all .5s ease-in-out;
 }
 

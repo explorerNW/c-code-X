@@ -26,7 +26,7 @@ let notify = new Notify();
     navigationBar.style.position = "absolute";
     navigationBar.style.left = "0px";
     navigationBar.style.top = "0px";
-    navigationBar.style.width = clientWidth*0.20+"px";      
+    navigationBar.style.width = clientWidth*0.15+"px";      
     navigationBar.style.height = clientHeight + "px";  
     
     //监听导航栏点击事件改变iframe的src值
@@ -44,14 +44,14 @@ let notify = new Notify();
     //隐藏按钮
     hiddeBtn.style.position = "absolute";    
     hiddeBtn.style.top = "30px";            
-    hiddeBtn.style.left = Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";//Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";   (navigationBar.style.width).toString()
+    hiddeBtn.style.left = navigationBar.style.width;
 
 
     //屏幕适配-------------------当屏幕宽度小于600时自动导航栏隐藏
     if (clientWidth < 600) {
         navigationBar.style.width = Number((navigationBar.style.width.toString()).replace(/px/g,''))+20+"px"
-        navigationBar.style.fontSize = "15px";
-        hiddeBtn.style.left = Number(((navigationBar.style.width).replace(/px/g,'')).toString())+"px";
+        navigationBar.style.fontSize = "13px";
+        hiddeBtn.style.left = navigationBar.style.width;
         navigationBar.style.left = -Number((navigationBar.style.width).toString().replace("px",''))+"px";
         content.style.width = "100%";
         top.style.width = "100%";
@@ -66,8 +66,7 @@ let notify = new Notify();
     hiddeBtn.addEventListener("click", function () {            
         if (navigationBar.style.left != "0px") {                                                       
             navigationBar.style.left = "0px";
-            content.style.width = "80%";
-            //top.style.width = "80%";
+            content.style.width = "85%";            
         } else {                                
             navigationBar.style.left = -Number(((navigationBar.style.width).toString()).replace("px",''))+ "px";
             content.style.width = "100%";
